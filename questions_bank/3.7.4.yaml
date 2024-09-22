@@ -1,0 +1,12 @@
+PIN: 3.7.3
+options:
+- Usability
+- Cultural and Political
+- Performance
+- Appearance (or Operational)
+question: "3.7.4 The product shall be able to register 50.000 items per hour."
+votes:
+  Usability: 0
+  Cultural and Political: 0
+  Performance: 0
+  Appearance (or Operational): 0

@@ -1,0 +1,16 @@
+PIN: 3.8k
+options:
+- User requirement
+- System requirement
+- Design element
+- Plans
+- Context information
+- Irrelevant detail
+question: "3.8k (k) The system must be operating satisfactorily by December 2029 ### and will be produced by the IT department,### under coordination of the engineering department."
+votes:
+  User requirement: 0
+  System requirement: 0
+  Design element: 0
+  Plans: 0
+  Context information: 0
+  Irrelevant detail: 0

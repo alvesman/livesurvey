@@ -1,0 +1,18 @@
+services:
+  survey:
+    image: id8314/survey:1.0
+    restart: always
+    ports:
+      - "5225:5000"
+    volumes:
+      - ./questions_bank:/questions_bank
+    environment:
+      FLASK_APP: app.py
+      PERMANENT_SESSION_LIFETIME: 10
+    command: flask run --host=0.0.0.0
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.survey.rule=Host(`q0.cogz.online`)"
+      - "traefik.http.routers.survey.entrypoints=websecure"
+      - "traefik.http.routers.survey.tls.certresolver=myresolver"
+      - "traefik.http.services.survey.loadbalancer.server.port=5225"

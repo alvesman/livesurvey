@@ -1,0 +1,16 @@
+PIN: 3.8c
+options:
+- User requirement
+- System requirement
+- Design element
+- Plans
+- Context information
+- Irrelevant detail
+question: "3.8c Users will be able to know which were the original training sessions and to ### compare them with the sessions actually performed."
+votes:
+  User requirement: 0
+  System requirement: 0
+  Design element: 0
+  Plans: 0
+  Context information: 0
+  Irrelevant detail: 0

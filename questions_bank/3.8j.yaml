@@ -1,0 +1,16 @@
+PIN: 3.8j
+options:
+- User requirement
+- System requirement
+- Design element
+- Plans
+- Context information
+- Irrelevant detail
+question: "3.8j The screen will show tables with the planned sessions vs. the sessions that were not initiated or completed, and ### will estimate the date for concluding the project.."
+votes:
+  User requirement: 0
+  System requirement: 0
+  Design element: 0
+  Plans: 0
+  Context information: 0
+  Irrelevant detail: 0

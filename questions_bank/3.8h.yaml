@@ -1,0 +1,16 @@
+PIN: 3.8h
+options:
+- User requirement
+- System requirement
+- Design element
+- Plans
+- Context information
+- Irrelevant detail
+question: "3.8h The system will produce at the end of each month updated information about all the athletes for the main coach."
+votes:
+  User requirement: 0
+  System requirement: 0
+  Design element: 0
+  Plans: 0
+  Context information: 0
+  Irrelevant detail: 0

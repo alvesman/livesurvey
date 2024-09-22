@@ -1,0 +1,13 @@
+PIN: 3.2
+options:
+- 1. functional requirements
+- 2. maintenance requirements
+- 3. project requirements
+- 4. performance requirements
+question: "Exerc. 3.2 (Naveda and Seidman, 2006, pp. 33\u201334): Which is the type\
+  \ of requirements that should not be included in a requirements document?"
+votes:
+  1. functional requirements: 1
+  2. maintenance requirements: 0
+  3. project requirements: 0
+  4. performance requirements: 0

@@ -1,0 +1,10 @@
+PIN: x
+options:
+- Apple
+- Peach
+- Other
+question: What is your favorite fruit?
+votes:
+  Apple: 1
+  Other: 2
+  Peach: 3

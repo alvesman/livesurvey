@@ -1,0 +1,30 @@
+PIN: 0
+options:
+- "Ter a possibilidade de exportar o ficheiro a que se refere a Portaria n.\xBA 321-A/2007,\
+  \ de 26 de mar\xE7o;"
+- "Possuir um sistema que permita identificar a grava\xE7\xE3o do registo de faturas\
+  \ ou documentos equivalentes e tal\xF5es de venda, atrav\xE9s de um algoritmo de\
+  \ cifra assim\xE9trica e de uma chave privada de conhecimento exclusivo do produtor\
+  \ do programa;"
+- "Possuir um controlo do acesso ao sistema inform\xE1tico, obrigando a uma autentica\xE7\
+  \xE3o de cada utilizador;"
+- "N\xE3o dispor de qualquer fun\xE7\xE3o que, no local ou remotamente, permita alterar,\
+  \ direta ou indiretamente, a informa\xE7\xE3o de natureza fiscal, sem gerar evid\xEA\
+  ncia agregada \xE0 informa\xE7\xE3o original."
+question: "A portaria n.\xBA 363/2010 estabelece os requisitos dos sistemas de processamento\
+  \ eletr\xF3nico de dados, nomeadamente para fatura\xE7\xE3o da transmiss\xE3o de\
+  \ bens ou de presta\xE7\xF5es de servi\xE7os (software de fatura\xE7\xE3o). No seu\
+  \ artigo 3.\xBA, a portaria estabelece o seguinte: A certifica\xE7\xE3o dos programas\
+  \ de fatura\xE7\xE3o depende da verifica\xE7\xE3o cumulativa dos seguintes requisitos:"
+votes:
+  ? "N\xE3o dispor de qualquer fun\xE7\xE3o que, no local ou remotamente, permita\
+    \ alterar, direta ou indiretamente, a informa\xE7\xE3o de natureza fiscal, sem\
+    \ gerar evid\xEAncia agregada \xE0 informa\xE7\xE3o original."
+  : 0
+  "Possuir um controlo do acesso ao sistema inform\xE1tico, obrigando a uma autentica\xE7\xE3o de cada utilizador;": 0
+  ? "Possuir um sistema que permita identificar a grava\xE7\xE3o do registo de faturas\
+    \ ou documentos equivalentes e tal\xF5es de venda, atrav\xE9s de um algoritmo\
+    \ de cifra assim\xE9trica e de uma chave privada de conhecimento exclusivo do\
+    \ produtor do programa;"
+  : 1
+  "Ter a possibilidade de exportar o ficheiro a que se refere a Portaria n.\xBA 321-A/2007, de 26 de mar\xE7o;": 0

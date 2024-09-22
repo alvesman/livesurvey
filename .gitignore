@@ -1,0 +1,55 @@
+# Byte-compiled Python files
+*.pyc
+*.pyo
+*.pyd
+__pycache__/
+*.env
+*.venv
+venv/
+ENV/
+env/
+*.egg
+*.egg-info/
+dist/
+build/
+eggs/
+parts/
+bin/
+var/
+*.log
+
+# Flask-related
+instance/
+*.sqlite3
+*.db
+*.bak
+
+# Environment variables
+.env
+*.env
+
+# macOS system files
+.DS_Store
+
+# IDEs and editors
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Python testing
+.coverage
+htmlcov/
+.tox/
+.nox/
+.pytest_cache/
+
+# pip and virtual environments
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Static file build outputs
+staticfiles/
+node_modules/
+npm

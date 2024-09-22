@@ -1,0 +1,12 @@
+services:
+  web:
+    build:
+      context: .
+      dockerfile: dockerfile
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./questions_bank:/questions_bank
+    environment:
+      FLASK_APP: app.py
+    command: flask run --host=0.0.0.0

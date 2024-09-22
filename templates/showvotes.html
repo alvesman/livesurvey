@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Live Voting Results</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Meta refresh tag to reload every 5 seconds -->
+    <meta http-equiv="refresh" content="5">
+    <!-- Custom CSS to double the text size and make it bold -->
+    <style>
+        .progress-bar {
+            font-size: 2em;    /* Doubles the text size */
+            font-weight: bold; /* Makes the text bold */
+        }
+    </style>    
+</head>
+<body>
+<div class="container py-5">
+
+    <h3 class="text-center text-success">Live Voting Results</h3>
+    <p class="text-center text-muted">This page will refresh every 5 seconds to show updated results.</p>
+    <h1 class="text-center mb-4">{{ question }}</h1>
+    <h4 class="text-center mb-4">Votes: {{ total_votes }} at this time.</h4>
+    
+    <div class="mt-5">
+        {% set total_votes = votes.values() | sum %}
+        {% for option in options %}
+            {% set count = votes.get(option, 0) %}
+            {% set percentage = (count / total_votes * 100) if total_votes > 0 else 0 %}
+            <div class="mb-4">
+                <p><strong>{{ option }}</strong></p>
+                <div class="progress" style="height: 50px;">
+                    <div class="progress-bar" role="progressbar" style="width: {{ percentage }}%;" aria-valuenow="{{ percentage }}" aria-valuemin="0" aria-valuemax="100">
+                        {{ count }} votes ({{ percentage | round(1) }}%)
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+
+    <div class="text-center mt-5">
+        <a href="{{ url_for('logout') }}" class="btn btn-secondary">EXIT</a>
+    </div>
+</div>
+
+<!-- Bootstrap JS and dependencies -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

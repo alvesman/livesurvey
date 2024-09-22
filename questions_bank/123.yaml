@@ -1,0 +1,14 @@
+PIN: 123
+options:
+- Python
+- JavaScript
+- Java
+- C++
+- C#
+question: What is your favorite programming language?
+votes:
+  C#: 0
+  C++: 0
+  Java: 0
+  JavaScript: 0
+  Python: 0

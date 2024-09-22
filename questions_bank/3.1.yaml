@@ -1,0 +1,13 @@
+PIN: 3.1
+options:
+- 1. design restrictions
+- 2. product delivery constraints
+- 3. functionalities to make available
+- 4. performance characteristics
+question: 'Exerc. 3.1 (Naveda and Seidman, 2006, pp. 39,40): Which is the type of
+  elements less appropriate to be included in a requirements document?'
+votes:
+  1. design restrictions: 0
+  2. product delivery constraints: 0
+  3. functionalities to make available: 1
+  4. performance characteristics: 0
