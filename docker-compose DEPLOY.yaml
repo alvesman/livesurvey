@@ -1,6 +1,6 @@
 services:
   survey:
-    image: id8314/survey:1.0
+    image: id8314/survey:1.2
     restart: always
     ports:
       - "5225:5000"
