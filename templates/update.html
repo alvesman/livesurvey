@@ -61,4 +61,19 @@
             <button class="btn btn-danger remove-option" type="button">Remove</button>
         `;
         container.appendChild(div);
- 
+
+        // Add event listener to the new remove button
+        div.querySelector('.remove-option').addEventListener('click', function() {
+            div.remove();
+        });
+    });
+
+    // Add event listener to existing remove buttons
+    document.querySelectorAll('.remove-option').forEach(function(button) {
+        button.addEventListener('click', function() {
+            button.parentElement.remove();
+        });
+    });
+</script>
+</body>
+</html>

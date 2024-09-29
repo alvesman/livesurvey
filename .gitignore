@@ -21,7 +21,9 @@ var/
 # Flask-related
 instance/
 *.sqlite3
-*.db
+#*.db
+*.db-shm
+*.db-wal
 *.bak
 
 # Environment variables
