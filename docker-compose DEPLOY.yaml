@@ -5,10 +5,11 @@ services:
     ports:
       - "5225:5000"
     volumes:
-      - ./questions_bank:/questions_bank
+      - ./:/dbpath
     environment:
       FLASK_APP: app.py
       PERMANENT_SESSION_LIFETIME: 10
+      DATABASE: "./survey.db"
     command: flask run --host=0.0.0.0
     labels:
       - "traefik.enable=true"

@@ -13,14 +13,22 @@
             font-size: 2em;    /* Doubles the text size */
             font-weight: bold; /* Makes the text bold */
         }
-    </style>    
+        .form-check-label {
+            font-size: 1.5em; /* Increase label font size */
+            font-weight: bold; /* Optional: Make label bold */
+        }
+        .form-check-input {
+            font-size: 1.5em; /* Increase label font size */
+            font-weight: bold; /* Optional: Make label bold */
+        }        
+    </style>  
 </head>
 <body>
 <div class="container py-5">
 
     <h3 class="text-center text-success">Live Voting Results</h3>
     <p class="text-center text-muted">This page will refresh every 5 seconds to show updated results.</p>
-    <h1 class="text-center mb-4">{{ question }}</h1>
+    <h1 class="text-center mb-4">{{ question|safe }}</h1>
     <h4 class="text-center mb-4">Votes: {{ total_votes }} at this time.</h4>
     
     <div class="mt-5">
@@ -29,7 +37,7 @@
             {% set count = votes.get(option, 0) %}
             {% set percentage = (count / total_votes * 100) if total_votes > 0 else 0 %}
             <div class="mb-4">
-                <p><strong>{{ option }}</strong></p>
+                <label class="form-check-label">{{ option }}</label>
                 <div class="progress" style="height: 50px;">
                     <div class="progress-bar" role="progressbar" style="width: {{ percentage }}%;" aria-valuenow="{{ percentage }}" aria-valuemin="0" aria-valuemax="100">
                         {{ count }} votes ({{ percentage | round(1) }}%)

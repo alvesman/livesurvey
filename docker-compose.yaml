@@ -6,7 +6,8 @@ services:
     ports:
       - "5000:5000"
     volumes:
-      - ./questions_bank:/questions_bank
+      - ./:/dbpath
     environment:
       FLASK_APP: app.py
+      DATABASE: "survey.db"
     command: flask run --host=0.0.0.0

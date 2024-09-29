@@ -14,9 +14,8 @@ app.secret_key = '_! SecretKey !_'
 session_lifetime_minutes = int(os.environ.get('PERMANENT_SESSION_LIFETIME', 10))
 app.config['PERMANENT_SESSION_LIFETIME'] = timedelta(minutes=session_lifetime_minutes)
 
-# Database file
-DATABASE = './questions_bank/survey.db'
-
+DAKCTABASE = "/dbpath/survey.db"
+DATABASE = "./survey.db"
 
 # Helper function to get a database connection
 def get_db_connection():
@@ -106,12 +105,21 @@ def save_data(data):
             with get_db_connection() as conn:
                 # Convert the votes dictionary to a comma-separated string
                 votes = ','.join(str(data['votes'][option]) for option in data['options'])
-                # Update the database with the new data
-                conn.execute(
-                    'UPDATE questions SET question = ?, options = ?, votes = ? WHERE PIN = ?',
-                    (data['question'], '§'.join(data['options']), votes, data['PIN'])
-                )
-                conn.commit()
+                                                
+                # Check if a question with this PIN already exists
+                existing_question = conn.execute('SELECT * FROM questions WHERE PIN = ?', (data['PIN'],)).fetchone()
+                
+                if existing_question:
+                    # Update the existing question
+                    conn.execute('UPDATE questions SET question = ?, options = ?, votes = ? WHERE PIN = ?',
+                    (data['question'], '§'.join(data['options']), votes, data['PIN']))
+                else:
+                    # Insert a new question
+                    conn.execute('INSERT INTO questions (question, options, votes, PIN) VALUES (?, ?, ?, ?)',
+                    (data['question'], '§'.join(data['options']), votes, data['PIN']))
+                
+                conn.commit()                
+                
                 break  # Exit the retry loop if the operation succeeds
         except sqlite3.OperationalError as e:
             if 'database is locked' in str(e):
@@ -171,11 +179,15 @@ def enter_pin():
 
 @app.route('/', methods=['GET', 'POST'])
 def vote():
+    
     if not session.get('authenticated'):
         return redirect(url_for('enter_pin'))
 
     data = load_data()
-
+    if len(data) == 0:
+        session['authenticated'] = False
+        return redirect(url_for('enter_pin'))
+    
     # Check if the user has already voted
     if session.get('voted' + str(data['PIN'])):
         return render_template('already_voted.html', question=data['question'], options=data['options'], votes=data['votes'])
@@ -218,6 +230,7 @@ def update_data():
         pin = request.form.get('pin')
         if pin:
             data['PIN'] = str(pin)
+            session['pin'] = data['PIN']
         save_data(data)
         flash('Data updated successfully!')
         return redirect(url_for('vote'))
@@ -230,32 +243,20 @@ def update_yaml():
         try:
             # Parse the YAML data
             new_data = yaml.safe_load(yaml_text)
-            
+            data = {
+                        'PIN': "",
+                        'question': "",
+                        'options': "",
+                        'votes': ""
+                    }
             # Validate that the necessary fields are present in the YAML structure
-            if 'PIN' in new_data and 'question' in new_data and 'options' in new_data:
-                pin = str(new_data['PIN'])
-                question = new_data['question']
-                options = new_data['options']
-                
-                # Initialize votes for each option to zero
-                votes = [0] * len(options)
-                
-                with get_db_connection() as conn:
-                    # Check if a question with this PIN already exists
-                    existing_question = conn.execute('SELECT * FROM questions WHERE PIN = ?', (pin,)).fetchone()
-                    
-                    if existing_question:
-                        # Update the existing question
-                        conn.execute('UPDATE questions SET question = ?, options = ?, votes = ? WHERE PIN = ?',
-                                     (question, ','.join(options), ','.join(map(str, votes)), pin))
-                        flash('Question updated successfully!', 'success')
-                    else:
-                        # Insert a new question
-                        conn.execute('INSERT INTO questions (question, options, votes, PIN) VALUES (?, ?, ?, ?)',
-                                     (question, '§'.join(options), ','.join(map(str, votes)), pin))
-                        flash('New question created successfully!', 'success')
-                    
-                    conn.commit()
+            if 'PIN' in new_data and 'question' in new_data and 'options' in new_data:                
+                data['PIN'] = str(new_data['PIN'])
+                data['question'] = new_data['question']
+                data['options'] = new_data['options']
+                data['votes'] = {option: 0 for option in data['options']}
+                save_data(data)
+                session['pin'] = data['PIN']
                 return redirect(url_for('vote'))
             else:
                 flash('Invalid YAML structure. Please include "PIN", "question", and "options".', 'danger')

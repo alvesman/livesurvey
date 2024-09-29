@@ -11,11 +11,21 @@
             font-size: 2em;    /* Doubles the text size */
             font-weight: bold; /* Makes the text bold */
         }
-    </style>    
+        .form-check-label {
+            font-size: 1.5em; /* Increase label font size */
+            font-weight: bold; /* Optional: Make label bold */
+        }
+        .form-check-input {
+            font-size: 1.5em; /* Increase label font size */
+            font-weight: bold; /* Optional: Make label bold */
+        }        
+    </style>
 </head>
 <body>
 <div class="container py-5">
-    <h1 class="text-center mb-4">{{ question }}</h1>
+
+    <h1 class="text-center mb-4">{{ question|safe }}</h1>
+
     <form action="{{ url_for('vote') }}" method="post">
         {% set total_votes = votes.values() | sum %}
         {% for option in options %}
